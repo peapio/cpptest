@@ -2,18 +2,26 @@
 CC = g++
 LD = g++
 
-SRCS = $(wildcard *.cpp)
+MKFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+PROJ_DIR = $(dir (MKFILE_PATH))
 
-OBJS = $(patsubst %.cpp, %.o, $(SRCS))
+BUILD_DIR = $(PROJ_DIR)build/
+SRC_DIR = $(PROJ_DIR)src/
+
+
+SRCS = $(wildcard $(PROJ_DIR)*.cpp)
+
+OBJS = $(patsubst $(PROJ_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRCS))
 
 
 TARGET = hello
 
 all: $(TARGET)
 
+$(info $(OBJS))
 
-%.o: %.cpp
-	$(CC) -c -g $^
+$(BUILD_DIR)%.o: $(PROJ_DIR)%.cpp
+	$(CC) -c -g $^ -o $@
 
 $(TARGET): $(OBJS)
 	$(LD) -o $@ $^
