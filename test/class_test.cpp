@@ -36,7 +36,7 @@ HasPtr::~HasPtr()
 {
     if (--*count == 1)
     {
-        dbg("delete count");
+        // dbg("delete count");
         delete count;
         delete ps;
         count = NULL;

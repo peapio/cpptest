@@ -1,5 +1,7 @@
-#include "class_test.h"
+#include "dbg.h"
+#include "test/class_test.h"
 
+#if 1
 void test_class()
 {
     HasPtr obj("hello");
@@ -23,9 +25,13 @@ void test_class()
     // obj.print();
     // obj2.print();
 }
-
+#endif
 int main(int argc, char const *argv[])
 {
+    /* code */
+    test_class();
     dbg("hello, world!!!");
+    dbg("zxcv");
     return 0;
 }
+

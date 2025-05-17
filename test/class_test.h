@@ -4,7 +4,7 @@
 #include <vector>
 #include <list>
 #include <memory>
-#include "dbg.h"
+#include "../dbg.h"
 
 typedef std::shared_ptr<int> SharedPtr;
 typedef std::unique_ptr<int> UniquePtr;
