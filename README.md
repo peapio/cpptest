@@ -2,7 +2,7 @@
 
 ## 智能指针
 1. shared_ptr 👌
-2. unique_ptr
+2. unique_ptr 👌
 3. weak_ptr
 ## 池化结构
 1. 线程池
