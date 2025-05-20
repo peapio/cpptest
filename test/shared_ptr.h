@@ -5,7 +5,7 @@
 namespace my_std{
 
 struct ControlBlock {
-    std::atomic<int> ref_count;
+    std::atomic<size_t> ref_count;
     ControlBlock() : ref_count(1) {}
 };
 
@@ -22,7 +22,7 @@ private:
     {
         if (control != nullptr)
         {
-            if(--(control->ref_count) == 0)
+            if(control->ref_count.fetch_sub(1) == 1)
             {
                 delete ptr;
                 delete control;
@@ -68,7 +68,7 @@ public:
         control = other.control;
         if (control)
         {
-            control->ref_count++;
+            control->ref_count.fetch_add(1);
             dbg("Copied ThreadSafeSharedPtr, ref_count = ", control->ref_count.load())
         }
     }
@@ -82,7 +82,7 @@ public:
             ptr = other.ptr;
             control = other.control;
             if (control) {
-                control->ref_count++;
+                control->ref_count.fetch_add(1);
                 std::cout << "Assigned ThreadSafeSharedPtr, ref_count = " << control->ref_count.load() << std::endl;
             }
         }
