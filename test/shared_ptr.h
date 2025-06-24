@@ -73,7 +73,7 @@ public:
         }
     }
     // 拷贝赋值运算符, 可能已持有资源，用另一个对象资源覆盖本对象资源
-    SharedPtr& operator=(const SharedPtr* other)
+    SharedPtr& operator=(const SharedPtr& other)
     {
         if(this!= &other)
         {

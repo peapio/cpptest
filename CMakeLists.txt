@@ -10,6 +10,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_library(test_lib STATIC
     test/class_test.cpp
     test/class_test.h
+    test/my_func.cpp
+    test/my_func.h
+    test/my_string.h
+    test/my_shared_ptr.h
+    test/my_list.h
     dbg.h
 )
 
